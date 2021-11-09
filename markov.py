@@ -9,10 +9,16 @@ def open_and_read_file(file_path):
     Takes a string that is a file path, opens the file, and turns
     the file's contents as one string of text.
     """
+    text = ""
 
-    # your code goes here
+    with open(file_path) as file:
+        for line in file:
+            line = line.rstrip()
+            text += line + " "
 
-    return 'Contents of your file as one long string'
+    return text
+
+
 
 
 def make_chains(text_string):
@@ -42,9 +48,29 @@ def make_chains(text_string):
 
     chains = {}
 
-    # your code goes here
+    words_collection = text_string.split(" ")
+    words_collection.pop(len(words_collection)-1)
+    # print(words_collection)
+    # looping through words_collection and assign 3 variable[1] first [2] 2nd [3]3rd as a tuple
+    # Does the key exist in chain {} if not, assign third word as a list value
+        # If yes, append to new variable list
+        # If no, then it will create a new key/ toop
 
+    for i in range(len(words_collection)-2):
+        first_word = words_collection[i]
+        second_word = words_collection[i+1]
+        third_word = words_collection[i+2]
+
+        toop = (first_word,second_word)
+
+        if toop not in chains:
+            chains[toop] = [third_word]
+        else:
+            chains[toop].append(third_word)
+    print(chains)
     return chains
+
+
 
 
 def make_text(chains):
@@ -69,3 +95,4 @@ chains = make_chains(input_text)
 random_text = make_text(chains)
 
 print(random_text)
+
