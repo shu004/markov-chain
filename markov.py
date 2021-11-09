@@ -49,7 +49,7 @@ def make_chains(text_string):
     chains = {}
 
     words_collection = text_string.split(" ")
-    print(len(words_collection))
+    #pop last element in list because it's a space from open_and_read_file function
     words_collection.pop()
     # print(words_collection)
     # looping through words_collection and assign 3 variable[1] first [2] 2nd [3]3rd as a tuple
