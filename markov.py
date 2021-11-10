@@ -47,13 +47,8 @@ def make_chains(text_string):
     chains = {}
 
     words_collection = text_string.split(" ")
-    #pop last element in list because it's a space from open_and_read_file function
     words_collection.pop()
-    # print(words_collection)
-    # looping through words_collection and assign 3 variable[1] first [2] 2nd [3]3rd as a tuple
-    # Does the key exist in chain {} if not, assign third word as a list value
-        # If yes, append to new variable list
-        # If no, then it will create a new key/ toop
+
 
     for i in range(len(words_collection)-2):
         first_word = words_collection[i]
@@ -77,35 +72,23 @@ def make_text(chains):
 
     words = []
 
-    # sort chains dictionary keys so we have a list of sorted keys
-    # choice
-    # use random choice on the sorted key list above
-    # add that to the container words
-    # the next word is a
-    # random value from that key
-    # create new key is going to take second position in that tuple combine with the choosen word
-    # keep doing that
-    # key[-] [1]
     list_of_keys = sorted(chains.keys())
     first_two_words = choice(list_of_keys)
-    words.append(first_two_words)
+    word1, word2 = first_two_words
+    words.append(word1)
+    words.append(word2)
     list_of_value = chains.get(first_two_words)
     word = choice(list_of_value)
     words.append(word)
-#[('in', 'a'), 'house?']
 
-    new_key = (words[0][1],words[1])
+    new_key = (words[1],words[2])
+    
 
     while new_key in list_of_keys:
         random_value = chains.get(new_key)
-
         random_word = choice(random_value) #random word for new list
         words.append(random_word)
-
         new_key = (new_key[1], random_word)
-    #[('in', 'a'), 'house?']
-        # new_key = (words[0],words[1]) #keeps running in loop
-        # random_value = chains.get(new_key)
 
 
     return ' '.join(words)
